@@ -93,7 +93,7 @@ class PlayList {
     public int indexOf(String title) {
         title = title.substring(0, 1).toUpperCase() + title.substring(1).toLowerCase();
         for (int i = 0; i < tracks.length; i++) {
-            if (title.equals(this.tracks[i].getTitle())) {
+            if (title.equals(tracks[i].getTitle())) {
                 return i;
             }
         }
@@ -143,19 +143,11 @@ class PlayList {
             return; // it doesnt allow me to return -1
         }
 
-        if (i == this.size - 1) {
-            this.removeLast();
-            this.size = size - 1;
-        } else {
-            this.tracks[i] = null; // Removes the track in the i index fron the list
-            this.size = size - 1; // Decreasing the actual number of tracks by 1
-            // “Closes the gap” in the array by moving all the tracks on the right of the
-
-            for (int j = i; j <= this.size; j++) {
-                this.tracks[j] = this.tracks[j + 1];
-            }
-
+        for (int j = i; j < this.size - 1; j++) {
+            this.tracks[j] = tracks[j + 1];
         }
+        this.removeLast();
+
     }
 
     /**
