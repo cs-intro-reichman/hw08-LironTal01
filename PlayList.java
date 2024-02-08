@@ -57,7 +57,7 @@ class PlayList {
     public String toString() {
         String data = "";
         for (int i = 0; i < tracks.length; i++) {
-            data = data + this.tracks[i].toString();
+            data = data + "\n" + this.tracks[i].toString();
         }
         return data;
     }
@@ -92,7 +92,7 @@ class PlayList {
      */
     public int indexOf(String title) {
         title = title.substring(0, 1).toUpperCase() + title.substring(1).toLowerCase();
-        for (int i = 0; i < tracks.length; i++) {
+        for (int i = 0; i < size; i++) {
             if (title.equals(tracks[i].getTitle())) {
                 return i;
             }
@@ -139,7 +139,7 @@ class PlayList {
      * does nothing and returns -1.
      */
     public void remove(int i) {
-        if (this.size == 0 || i < 0 || i > this.maxSize) {
+        if (this.size == 0 || i < 0 || i > this.size - 1) {
             return; // it doesnt allow me to return -1
         }
 
@@ -196,11 +196,11 @@ class PlayList {
      */
     private int minIndex(int start) {
 
-        if (start < 0 || start > this.size - 1)
+        if (start < 0 || start > size - 1)
             return -1;
         int minDuration = this.tracks[start].getDuration();
         int index = start;
-        for (int i = start + 1; i < this.size; i++) {
+        for (int i = start + 1; i < size; i++) {
             if (minDuration > this.tracks[start].getDuration()) {
                 minDuration = this.tracks[start].getDuration();
                 index = i;
@@ -214,6 +214,9 @@ class PlayList {
      * If the list is empty, returns null.
      */
     public String titleOfShortestTrack() {
+        if (this.size == 0)
+            return null;
+
         return tracks[minIndex(0)].getTitle();
     }
 
