@@ -201,8 +201,8 @@ class PlayList {
         int minDuration = 1000000;
         int index = maxSize;
         for (int i = start + 1; i < size; i++) {
-            if (minDuration > this.tracks[start].getDuration()) {
-                minDuration = this.tracks[start].getDuration();
+            if (minDuration > this.tracks[i].getDuration()) {
+                minDuration = this.tracks[i].getDuration();
                 index = i;
             }
         }
