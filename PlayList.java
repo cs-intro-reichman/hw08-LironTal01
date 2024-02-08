@@ -217,7 +217,7 @@ class PlayList {
         if (this.size == 0)
             return null;
 
-        return tracks[minIndex(0)].getTitle();
+        return this.tracks[minIndex(0)].getTitle();
     }
 
     /**
