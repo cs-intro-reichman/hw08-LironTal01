@@ -80,8 +80,8 @@ class PlayList {
     public int totalDuration() {
         int sum = 0;
 
-        for (int i = 0; i < tracks.length; i++) {
-            sum = sum + this.tracks[i].getDuration();
+        for (int i = 0; i < size; i++) {
+            sum = sum + tracks[i].getDuration();
         }
         return sum;
     }
