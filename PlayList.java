@@ -198,8 +198,9 @@ class PlayList {
 
         if (start < 0 || start > size - 1)
             return -1;
-        int minDuration = this.tracks[start].getDuration();
-        int index = start;
+
+        int minDuration = 10000000;
+        int index = maxSize;
         for (int i = start + 1; i < size; i++) {
             if (minDuration > this.tracks[start].getDuration()) {
                 minDuration = this.tracks[start].getDuration();
@@ -214,10 +215,8 @@ class PlayList {
      * If the list is empty, returns null.
      */
     public String titleOfShortestTrack() {
-        if (this.size == 0)
-            return null;
 
-        return this.tracks[minIndex(0)].getTitle();
+        return tracks[minIndex(0)].getTitle();
     }
 
     /**
@@ -229,7 +228,7 @@ class PlayList {
     public void sortedInPlace() {
         // Uses the selection sort algorithm,
         // calling the minIndex method in each iteration.
-        for (int i = 0; i < size - 1; i++) {
+        for (int i = 0; i < this.size; i++) {
             Track temp = this.tracks[minIndex(i)];
             this.tracks[minIndex(i)] = this.tracks[i];
             this.tracks[i] = temp;
