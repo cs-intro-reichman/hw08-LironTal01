@@ -110,6 +110,7 @@ class PlayList {
      */
     public boolean add(int i, Track track) {
 
+        // #feedback - if i is out of bounds, you can still try to access the array with it. You should check i here as well.
         if (this.size == 0 || i == this.size) {
             this.tracks[i] = track;
             this.size++;
@@ -198,6 +199,7 @@ class PlayList {
 
         if (start < 0 || start > size - 1)
             return -1;
+        // #feedback - to be on the safe side, you can take the min to be the track in index start.
         int minDuration = 1000000;
         int index = maxSize;
         for (int i = start + 1; i < size; i++) {
